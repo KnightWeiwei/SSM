@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+</head>
+<body>
+<div>
+   <input type="button" value="提交1" onclick="">
+</div>
+</body>
+
+<script >
+    (function() {
+        $.ajax({
+            url: 'user/AllUser',
+            type: 'post',
+            success:function(data) {
+                let res = JSON.parse(data);;
+                for(let user of res){
+
+                    console.log(user.username+" -- "+user.pwd);
+                }
+
+            }
+        });
+
+    })();
+</script>
+</html>

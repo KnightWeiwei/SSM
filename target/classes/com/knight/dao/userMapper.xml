@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.knight.dao.userMapper">
+<!-- id和接口名对应，parameterType和接口参数类型对应 -->
+    <insert id="addUser" parameterType="user">
+        insert into jdbc.test (username, pwd)
+        values (#{username},#{pwd});
+    </insert>
+
+    <delete id="deleteUser" parameterType="String">
+        delete from jdbc.test where username=#{id};
+    </delete>
+
+    <update id="updateUser" parameterType="user">
+        update jdbc.test
+        set pwd=#{pwd}
+        where username=#{username};
+    </update>
+
+    <select id="quaryUserById" resultType="user">
+        select * from jdbc.test where username=#{id};
+    </select>
+
+    <select id="quaryAllUser" resultType="user">
+        select * from jdbc.test;
+    </select>
+
+</mapper>

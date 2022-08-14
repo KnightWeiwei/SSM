@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 1.扫描service下的包-->
+    <context:component-scan base-package="com.knight.service"/>
+    <!-- 2.将我们所有的业务类，注入到Spring -->
+    <bean id="userServiceImpl" class="com.knight.service.userServiceImpl">
+        <property name="userMapper" ref="userMapper"/>
+    </bean>
+    <bean id="confirmNumServiceImpl" class="com.knight.service.confirmNumServiceImpl">
+        <property name="confirmNumMapper" ref="confirmNumMapper"/>
+    </bean>
+    <bean id="covid_provinceServiceImpl" class="com.knight.service.covid_provinceServiceImpl">
+        <property name="covid_provinceMapper" ref="covid_provinceMapper"/>
+    </bean>
+    <bean id="chineseServiceImpl" class="com.knight.service.chineseServiceImpl">
+        <property name="chineseMapper" ref="chineseMapper"/>
+    </bean>
+    <bean id="visitServiceImpl" class="com.knight.service.visitServiceImpl">
+        <property name="visitMapper" ref="visitMapper"/>
+    </bean>
+    <bean id="rankServiceImpl" class="com.knight.service.rankServiceImpl">
+        <property name="rankMapper" ref="rankMapper"/>
+    </bean>
+    <bean id="worldMapServiseImpl" class="com.knight.service.worldMapServiseImpl">
+        <property name="worldMapMapper" ref="worldMapMapper"/>
+    </bean>
+
+
+    <!-- 3.声明式事务配置 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!--注入数据源-->
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- aop事务支持 -->
+</beans>
